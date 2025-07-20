@@ -1,0 +1,74 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bitmap Font 編輯器</title>
+  <style>
+    body { font-family: sans-serif; line-height: 1.4; }
+    canvas { border: 1px solid black; margin-bottom: 10px; }
+    input, button, textarea { margin: 4px; } /* 新增 textarea 的樣式 */
+    table, td, th {
+      border: 1px solid gray;
+      border-collapse: collapse;
+      padding: 4px;
+    }
+    #mousePos {
+      margin-left: 12px;
+      color: #555;
+    }
+    #charSettingsInput, #charSettingsOutput {
+      width: 98%; /* 讓文字框寬度適應 */
+      height: 120px;
+    }
+  </style>
+  <link rel="stylesheet" href="bitmapFont.css">
+</head>
+<body>
+  <h2>Bitmap Font 編輯器</h2>
+
+  <label>上傳圖片：<input type="file" id="imgLoader" accept="image/*"></label><br>
+  <canvas id="canvas" width="512" height="256"></canvas><br>
+  <span id="mousePos">座標: (0, 0)</span>
+
+  <h3>畫面縮放</h3>
+  <button id="zoomOutBtn">-</button>
+  <button id="zoomInBtn">+</button>
+  <span id="zoomLevelDisplay">縮放: 100%</span>
+
+  <h3>新增字元 (單個)</h3>
+  <input id="charId" placeholder="char (e.g. A)" maxlength="1">
+  <input id="x" type="number" placeholder="x">
+  <input id="y" type="number" placeholder="y">
+  <input id="w" type="number" placeholder="width">
+  <input id="h" type="number" placeholder="height">
+  <button id="previewChar">預覽字元</button>
+  <button id="addChar">加入/更新字元</button>
+  <button id="deleteChar">刪除字元</button>
+
+  <h3>批量字元設定</h3>
+  <textarea id="charSettingsInput" placeholder="在此貼上多組字元設定，每行一個字元，格式如：Char,X,Y,W,H"></textarea><br>
+  <button id="importChars">匯入多組字元</button>
+
+  <h3>預設參數</h3>
+  <label>lineHeight: <input id="lineHeight" type="number" value="32"></label>
+  <br>
+  <label>檔名(圖片名.png): <input id="fileName" type="string" value="bitmapFont"></label>
+  <br>
+  <button id="exportFNT">匯出 .fnt</button>
+
+  <h3>已加入的字元</h3>
+  <table id="charTable">
+    <tr><th>Char</th><th>X</th><th>Y</th><th>W</th><th>H</th></tr>
+  </table>
+
+  <h3>所有字元設定 (可複製)</h3>
+  <textarea id="charSettingsOutput" readonly></textarea><br>
+
+  <h3>預覽文字</h3>
+  <input id="previewText" placeholder="輸入要預覽的文字" value="123,456,789.00">
+  <button id="previewBtn">顯示文字</button><br>
+  <canvas id="previewCanvas" width="800" height="300"></canvas>
+
+  <script src="bitmapFont.js"></script>
+</body>
+<script type="text/javascript" src="bitmapFont.js"></script>
+</html>
