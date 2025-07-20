@@ -6,3 +6,7 @@ body {
 #charId {
   border: 5px solid #2ba;
 }
+
+#note {
+  color: #666;
+}
